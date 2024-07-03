@@ -1,9 +1,22 @@
-import Image from "next/image";
+"use client";
+
+import { useForm } from "react-hook-form";
+import { useSelector, useDispatch } from "react-redux";
 
 export default function Home() {
+  const dispatch = useDispatch();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data) => {
+    try {
+    } catch (error) {}
+  };
   return (
     <main className="flex min-h-screen flex-display justify-center items-center p-24">
-      <form>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div class="grid gap-3 mb-6 md:grid-cols-3">
           <div>
             <label
@@ -15,10 +28,18 @@ export default function Home() {
             <input
               type="text"
               id="User_Name"
+              {...register("username", { required: true })}
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="User Name"
-              required
             />
+            {errors.username?.type === "required" && (
+              <p
+                role="alert"
+                className="block mb-2 text-sm font-medium text-red-500"
+              >
+                Username is required
+              </p>
+            )}
           </div>
 
           <div>
@@ -31,10 +52,18 @@ export default function Home() {
             <input
               type="text"
               id="First_Name"
+              {...register("firstname", { required: true })}
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="First Name"
-              required
             />
+            {errors.firstname?.type === "required" && (
+              <p
+                role="alert"
+                className="block mb-2 text-sm font-medium text-red-500"
+              >
+                First Name is required
+              </p>
+            )}
           </div>
 
           <div>
@@ -47,26 +76,18 @@ export default function Home() {
             <input
               type="text"
               id="Last_Name"
+              {...register("lastname", { required: true })}
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Last Name"
-              required
             />
-          </div>
-
-          <div>
-            <label
-              for="city"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >
-              city
-            </label>
-            <input
-              type="text"
-              id="city"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="city"
-              required
-            />
+            {errors.lastname?.type === "required" && (
+              <p
+                role="alert"
+                className="block mb-2 text-sm font-medium text-red-500"
+              >
+                Last Name is required
+              </p>
+            )}
           </div>
 
           <div>
@@ -79,10 +100,42 @@ export default function Home() {
             <input
               type="text"
               id="Address"
+              {...register("address1", { required: true })}
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Address"
-              required
             />
+            {errors.address1?.type === "required" && (
+              <p
+                role="alert"
+                className="block mb-2 text-sm font-medium text-red-500"
+              >
+                Address is required
+              </p>
+            )}
+          </div>
+
+          <div>
+            <label
+              for="city"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >
+              city
+            </label>
+            <input
+              type="text"
+              id="city"
+              {...register("city", { required: true })}
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="city"
+            />
+            {errors.city?.type === "required" && (
+              <p
+                role="alert"
+                className="block mb-2 text-sm font-medium text-red-500"
+              >
+                City is required
+              </p>
+            )}
           </div>
 
           <div>
@@ -95,10 +148,18 @@ export default function Home() {
             <input
               type="text"
               id="country"
+              {...register("country", { required: true })}
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="country"
-              required
             />
+            {errors.country?.type === "required" && (
+              <p
+                role="alert"
+                className="block mb-2 text-sm font-medium text-red-500"
+              >
+                Country is required
+              </p>
+            )}
           </div>
 
           <div>
@@ -111,9 +172,9 @@ export default function Home() {
             <input
               type="text"
               id="currency"
+              {...register("currency")}
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="currency"
-              required
             />
           </div>
 
@@ -127,10 +188,18 @@ export default function Home() {
             <input
               type="email"
               id="email"
+              {...register("email", { required: true })}
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="email"
-              required
             />
+            {errors.email?.type === "required" && (
+              <p
+                role="alert"
+                className="block mb-2 text-sm font-medium text-red-500"
+              >
+                Email is required
+              </p>
+            )}
           </div>
 
           <div>
@@ -143,9 +212,9 @@ export default function Home() {
             <input
               type="text"
               id="postalCode"
+              {...register("postalCode")}
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="postalCode"
-              required
             />
           </div>
 
@@ -159,9 +228,9 @@ export default function Home() {
             <input
               type="password"
               id="password"
+              {...register("password")}
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="•••••••••"
-              required
             />
           </div>
 
@@ -175,89 +244,25 @@ export default function Home() {
             <input
               type="text"
               id="title"
+              {...register("title")}
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="postalCode"
-              required
             />
           </div>
 
           <div>
             <label
-              for="securityQuestion"
+              for="nationality"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
-              Security Question
+              Nationality
             </label>
             <input
               type="text"
-              id="securityQuestion"
+              id="nationality"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="Security Question"
-              required
-            />
-          </div>
-
-          <div>
-            <label
-              for="securityAnswer"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >
-              Security Answer
-            </label>
-            <input
-              type="text"
-              id="securityAnswer"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="Security Answer"
-              required
-            />
-          </div>
-
-          <div>
-            <label
-              for="docType"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >
-              Doc Type
-            </label>
-            <input
-              type="text"
-              id="docType"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="docType"
-              required
-            />
-          </div>
-
-          <div>
-            <label
-              for="docNumber"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >
-              Doc Number
-            </label>
-            <input
-              type="text"
-              id="docNumber"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="docNumber"
-              required
-            />
-          </div>
-
-          <div class="mb-8">
-            <label
-              for="Mobile"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >
-              Mobile
-            </label>
-            <input
-              type="text"
-              id="Mobile"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="Mobile"
-              required
+              placeholder="nationality"
+              {...register("nationality")}
             />
           </div>
         </div>
