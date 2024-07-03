@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { useSelector, useDispatch } from "react-redux";
 
 export default function Home() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const {
     register,
     handleSubmit,

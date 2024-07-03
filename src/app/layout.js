@@ -5,16 +5,16 @@ import "./globals.css";
 import { Provider } from "react-redux";
 
 const inter = Inter({ subsets: ["latin"] });
-import { wrapper } from "../store";
+import { makeStore } from "../store";
 
-const RootLayout = ({ children }) => {
+export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Provider store={makeStore}>{children}</Provider>
+        {/* <Provider store={makeStore}> */}
+        {children}
+        {/* </Provider> */}
       </body>
     </html>
   );
-};
-
-export default wrapper.withRedux(RootLayout);
+}
